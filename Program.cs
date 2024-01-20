@@ -1,4 +1,6 @@
-﻿namespace ProjectOOP_OlehDrivko_w68340
+﻿using System.Net.WebSockets;
+
+namespace ProjectOOP_OlehDrivko_w68340
 {
     internal class Program
     {
@@ -29,6 +31,18 @@
             public void WriteToFile(List<string> lines)
             {
                 File.WriteAllLines(FilePath, lines);
+            }
+        }
+        public class OrderQueueManager : FileManager
+        {
+            public OrderQueueManager(string filePath) : base(filePath)
+            {
+            }
+
+            public void EnqueueOrder(Order order)
+            {
+                var orders = ReadFromFile();
+                orders.Add($"Order,{order.OrderID},{order.Product.ProductID},{order.Client.ClientID}");
             }
         }
         public class Product
