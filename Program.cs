@@ -25,6 +25,11 @@
                 }
                 return new List<string>();
             }
+
+            public void WriteToFile(List<string> lines)
+            {
+                File.WriteAllLines(FilePath, lines);
+            }
         }
         public class Product
         {
