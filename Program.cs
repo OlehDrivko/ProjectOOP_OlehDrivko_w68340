@@ -15,7 +15,7 @@ namespace ProjectOOP_OlehDrivko_w68340
 
             public FileManager(string filePath) 
             {
-            this.FilePath = filePath;
+                FilePath = filePath;
             }
 
 
@@ -48,6 +48,20 @@ namespace ProjectOOP_OlehDrivko_w68340
             }
 
         }
+
+
+        private Product GetProduct(int productId)
+        {
+            var products = new ProductFileManager().ReadFromFile();
+            var productDetails = products.FirstOrDefault(p => p.StartsWith($"Product,{productId},"));
+            if (productDetails != null)
+            {
+                var productName = productDetails.Split(',')[2];
+                return new Product { ProductID = productId, Name = productName };
+            }
+            return null;
+        }
+
         public class ProductFileManager : FileManager
         {
             public ProductFileManager() : base("products.txt") { }
