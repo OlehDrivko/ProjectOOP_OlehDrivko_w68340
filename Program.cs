@@ -4,10 +4,18 @@
     {
         static void Main(string[] args)
         {
-
+            var basePath = @"";
         }
 
+        public class FileManager
+        {
+            protected string FilePath;
 
+            public FileManager(string filePath) 
+            {
+            this.FilePath = filePath;
+            }
+        }
         public class Product
         {
             public int ProductID { get; set; }
