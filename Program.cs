@@ -15,6 +15,16 @@
             {
             this.FilePath = filePath;
             }
+
+
+            public List<string> ReadFromFile()
+            {
+                if (File.Exists(this.FilePath))
+                {
+                    return File.ReadAllLines(FilePath).ToList();
+                }
+                return new List<string>();
+            }
         }
         public class Product
         {
