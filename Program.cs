@@ -4,7 +4,29 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+
+        }
+
+
+        public class Product
+        {
+            public int ProductID { get; set; }
+            public string  Name { get; set; }
+        }
+
+        public class Client
+        {
+            public int ClientID { get; set; }
+            public string Name { get; set; }
+        }
+
+        public class Order
+        {
+            public int OrderID { get; set;}
+            public Product Product { get; set;}
+
+            public Client Client { get; set;}   
+
         }
     }
 }
