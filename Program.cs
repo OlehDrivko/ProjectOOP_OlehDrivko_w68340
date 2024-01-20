@@ -62,6 +62,18 @@ namespace ProjectOOP_OlehDrivko_w68340
             return null;
         }
 
+        private Client GetClient(int clientId)
+        {
+            var clients = new ClientFileManager().ReadFromFile();
+            var clientDetails = clients.FirstOrDefault(c => c.StartsWith($"Client,{clientId},"));
+            if (clientDetails != null)
+            {
+                var clientName = clientDetails.Split(',')[2];
+                return new Client { ClientID = clientId, Name = clientName };
+            }
+            return null;
+        }
+
         public class ProductFileManager : FileManager
         {
             public ProductFileManager() : base("products.txt") { }
