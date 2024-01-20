@@ -33,6 +33,8 @@ namespace ProjectOOP_OlehDrivko_w68340
                 File.WriteAllLines(FilePath, lines);
             }
         }
+
+
         public class OrderQueueManager : FileManager
         {
             public OrderQueueManager(string filePath) : base(filePath)
@@ -44,19 +46,30 @@ namespace ProjectOOP_OlehDrivko_w68340
                 var orders = ReadFromFile();
                 orders.Add($"Order,{order.OrderID},{order.Product.ProductID},{order.Client.ClientID}");
             }
+
         }
+        public class ProductFileManager : FileManager
+        {
+            public ProductFileManager() : base("products.txt") { }
+        }
+
+        public class ClientFileManager : FileManager
+        {
+            public ClientFileManager() : base("clients.txt") { }
+        }
+        // Tworzenie klasy Product
         public class Product
         {
             public int ProductID { get; set; }
             public string  Name { get; set; }
         }
-
+        // Tworzenie klasy Client
         public class Client
         {
             public int ClientID { get; set; }
             public string Name { get; set; }
         }
-
+        // Tworzenie klasy Order
         public class Order
         {
             public int OrderID { get; set;}
